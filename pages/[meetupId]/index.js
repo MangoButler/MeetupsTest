@@ -1,13 +1,22 @@
+import { Fragment } from "react";
 import MeetupDetail from "../../components/meetups/MeetupDetail";
 import { MongoClient, ObjectId } from "mongodb";
+import Head from "next/head";
 function MeetupDetails(props) {
   return (
-    <MeetupDetail
+    <Fragment>
+        <Head>
+            <title>{props.meetupData.title}</title>
+            <meta name="title" content={props.meetupData.description}/>
+        </Head>
+         <MeetupDetail
       title={props.meetupData.title}
       image={props.meetupData.image}
       address={props.meetupData.address}
       description={props.meetupData.description}
     />
+    </Fragment>
+   
   );
 }
 
@@ -63,3 +72,4 @@ export async function getStaticProps(context) {
 }
 
 export default MeetupDetails;
+
